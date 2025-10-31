@@ -43,6 +43,7 @@ li {
   width: 100%;
   overflow-y: auto;
   padding-top: 52px;
+  border: 1px solid black;
 }
 
 td {
