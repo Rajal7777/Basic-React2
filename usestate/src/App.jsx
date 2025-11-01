@@ -24,12 +24,14 @@ function App() {
 
   return (
     <>
-   
       <Form
         reqType={reqType}
         setReqType={setReqType}
       />
       <Table items={items}/>
+
+    
+   
     </>
   );
 }

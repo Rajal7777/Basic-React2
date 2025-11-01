@@ -44,3 +44,7 @@ td {
   border: 1px solid #000;
   padding: 0.25rem;
 }
+
+.router-part {
+  height: 100vh;
+}
