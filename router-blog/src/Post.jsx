@@ -7,8 +7,7 @@ const Post = ({ posts }) => {
     return (
         <>
             {posts.map((post) => (
-                console.log(typeof (post.body)),
-                <article className='post' key={post.id}  >
+               <article className='post' key={post.id}  >
                     <Link to={`/post/${post.id}`} >
                         <h2>{post.title}</h2>
                         <p className='postDate'>{post.datetime}</p>
