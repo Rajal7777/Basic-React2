@@ -49,6 +49,9 @@ body {
 .Header h1 {
     font-size: 1.5rem;
 }
+.Header {
+    justify-content: space-between;
+}
 
 
 .Footer {
