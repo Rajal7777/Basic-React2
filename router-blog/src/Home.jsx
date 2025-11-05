@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import DataContext from './context/DataContext';
 import Post from './Post';
-import './index.css';
 
-const Home = ({posts, fetchError, isLoading}) => {
 
-   return (
+
+const Home = () => {
+    const { searchResults, fetchError, isLoading } = useContext(DataContext);
+    return (
         <main className="Home">
-        {isLoading && <p className="statusMsg">Loading posts...</p>}
-        {fetchError && <p className="statusMsg" style={{ color: "red" }}>{`Error: ${fetchError}`}</p>}
-        {!isLoading && !fetchError &&
-        posts.length ? (
-        <Post  posts={posts} /> 
-        ) : (
-            <p className="statusMsg">No posts to display.</p>
-        )}
+            {isLoading && <p className="statusMsg">Loading posts...</p>}
+            {fetchError && <p className="statusMsg" style={{ color: "red" }}>{`Error: ${fetchError}`}</p>}
+            {!isLoading && !fetchError &&
+                searchResults.length ?
+                (<Post posts={searchResults} />)
+                :
+                (<p className="statusMsg">No posts to display.</p>)
+            }
         </main>
     );
 };

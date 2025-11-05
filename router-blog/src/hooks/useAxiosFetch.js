@@ -4,15 +4,14 @@ import { useState, useEffect } from "react";
 const useAxiosFetch = (dataUrl) => {
   const [data, setData] = useState([]);
   const [fetchError, setFetchError] = useState(null);
-  const [isLoading, setIsloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
     const source = axios.CancelToken.source();
 
     const fetchData = async (url) => {
-      setIsloading(true);
-
+      setIsLoading(true);
       try {
         const response = await axios.get(url, { cancelToken: source.token });
         if (isMounted) {
@@ -25,10 +24,10 @@ const useAxiosFetch = (dataUrl) => {
           setData([]);
         }
       } finally {
-        isMounted && setIsloading(false);
+        isMounted && setIsLoading(false);
       }
     };
-    
+
     fetchData(dataUrl);
 
     const cleanUp = () => {

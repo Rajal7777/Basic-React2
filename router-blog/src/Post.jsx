@@ -1,13 +1,12 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import './index.css';
+
 
 const Post = ({ posts }) => {
 
-    return (
+   return (
         <>
             {posts.map((post) => (
-               <article className='post' key={post.id}  >
+                <article className='post' key={post.id}  >
                     <Link to={`/post/${post.id}`} >
                         <h2>{post.title}</h2>
                         <p className='postDate'>{post.datetime}</p>

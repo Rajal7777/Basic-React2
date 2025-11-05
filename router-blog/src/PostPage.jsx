@@ -1,10 +1,26 @@
-import React from 'react';
-import { useParams, Link} from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useParams, Link, useNavigate} from 'react-router-dom';
+import DataContext from './context/DataContext';
+import api from "./api/posts";
 import './index.css';
 
-const PostPage = ({ posts, handleDelete }) => {
+const PostPage = () => {
+   const { posts, setPosts } = useContext(DataContext);
   const { id } = useParams(); //this id is that we passed as parameter in App.jsx route
   const post = posts.find(post => (post.id).toString() === id);
+  const navigate = useNavigate();
+
+    const handleDelete = (id) => {
+      try {
+        api.delete(`/posts/${id}`);
+        const postsList = posts.filter((post) => post.id !== id);
+        setPosts(postsList);
+        navigate("/home");
+      } catch (error) {
+        console.log(`Error: ${error.message}`);
+      }
+    };
+
   return (
     <main className="PostPage">
       {post && (
