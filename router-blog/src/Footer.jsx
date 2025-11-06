@@ -1,11 +1,10 @@
-import React from 'react'
-import './index.css';
+import { useStoreState } from "easy-peasy";
 
 const Footer = () => {
-  const today = new Date();
-  const year = today.getFullYear();
+  const postCount = useStoreState((state) => state.postCount);
+  
   return (
-    <p className='Footer'>copyright &copy; {year}</p>
+    <p className='Footer'>{postCount} Total Posts</p>
   )
 }
 

@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-import DataContext from './context/DataContext';
 import Post from './Post';
+import { useStoreState } from 'easy-peasy';
 
 
+const Home = ({ fetchError, isLoading }) => {
+    const searchResults  = useStoreState((state) => state.searchResults);
 
-const Home = () => {
-    const { searchResults, fetchError, isLoading } = useContext(DataContext);
     return (
         <main className="Home">
             {isLoading && <p className="statusMsg">Loading posts...</p>}
